@@ -1,0 +1,12 @@
+{
+  "name": "@ayonix/contracts",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./pricing.json": "./pricing.json",
+    "./mcp-tools.json": "./mcp-tools.json"
+  },
+  "scripts": { "typecheck": "tsc -p tsconfig.json" }
+}

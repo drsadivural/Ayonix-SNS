@@ -1,0 +1,429 @@
+{
+  "generated_at": "2026-11-01T06:13:05.012Z",
+  "commit_sha": "8acd7fa27a86343570c78999b15faed7c5ab6435",
+  "overall": "PARTIAL",
+  "counts": {
+    "BLOCKED": 34,
+    "PASS": 4
+  },
+  "commands": [
+    {
+      "name": "typecheck",
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "duration_ms": 8036,
+      "tests_passed": null,
+      "tail": "> @ayonix/web@0.1.0 typecheck\n> tsc -p tsconfig.json --noEmit\n\n\n> @ayonix/worker@0.1.0 typecheck\n> tsc -p tsconfig.json"
+    },
+    {
+      "name": "lint",
+      "command": "npm run lint",
+      "exit_code": 0,
+      "duration_ms": 5340,
+      "tests_passed": null,
+      "tail": "> ayonix-sns@0.1.0 lint\n> eslint ."
+    },
+    {
+      "name": "unit + provider contract + migration tests",
+      "command": "npx vitest run --project unit",
+      "exit_code": 0,
+      "duration_ms": 1261,
+      "tests_passed": 117,
+      "tail": "\n\n Test Files  9 passed (9)\n      Tests  117 passed (117)\n   Start at  06:13:18\n   Duration  802ms (transform 388ms, setup 0ms, import 645ms, tests 524ms, environment 1ms)"
+    },
+    {
+      "name": "workerd contract/integration tests",
+      "command": "npm run test -w @ayonix/worker",
+      "exit_code": 0,
+      "duration_ms": 16198,
+      "tests_passed": 46,
+      "tail": "Sourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/server.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/helpers.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/webStandardStreamableHttp.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/mediaType.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/requestBody.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/sseKeepAlive.js\" points to missing source files"
+    },
+    {
+      "name": "handoff reference tests",
+      "command": "npm run test:reference",
+      "exit_code": 0,
+      "duration_ms": 373,
+      "tests_passed": null,
+      "tail": "test_webhook_id_unique (__main__.Constraints.test_webhook_id_unique) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.011s\n\nOK"
+    },
+    {
+      "name": "web tests",
+      "command": "npm run test -w @ayonix/web",
+      "exit_code": 0,
+      "duration_ms": 2397,
+      "tests_passed": 22,
+      "tail": "\n\n Test Files  5 passed (5)\n      Tests  22 passed (22)\n   Start at  06:13:36\n   Duration  2.02s (transform 198ms, setup 419ms, import 350ms, tests 797ms, environment 3.24s)"
+    },
+    {
+      "name": "web build",
+      "command": "npm run build -w @ayonix/web",
+      "exit_code": 0,
+      "duration_ms": 4056,
+      "tests_passed": null,
+      "tail": "dist/assets/inter-latin-ext-700-normal-TidjK2hL.woff       48.63 kB\ndist/assets/inter-latin-ext-600-normal-CIVaiw4L.woff       48.66 kB\ndist/assets/index-BTTEw1lF.css                             33.61 kB │ gzip:   6.81 kB\ndist/assets/index-DEi3iFQF.js                             478.06 kB │ gzip: 141.99 kB\n\n✓ built in 169ms"
+    },
+    {
+      "name": "worker bundle (dry run)",
+      "command": "npx wrangler deploy --dry-run --outdir /tmp/ayonix-worker-dryrun",
+      "exit_code": 0,
+      "duration_ms": 2196,
+      "tests_passed": null,
+      "tail": "--dry-run: exiting now.\n\n\u001b[33m▲ \u001b[43;33m[\u001b[43;30mWARNING\u001b[43;33m]\u001b[0m \u001b[1mMultiple environments are defined in the Wrangler configuration file, but no target environment was specified for the deploy command.\u001b[0m\n\n  To avoid unintentional changes to the wrong environment, it is recommended to explicitly specify the target environment using the `-e|--env` flag or CLOUDFLARE_ENV env variable.\n  If your intention is to use the top-level environment of your configuration simply pass an empty string to the flag to target such environment. For example `--env=\"\"`."
+    }
+  ],
+  "requirements": [
+    {
+      "requirement_id": "AUTH-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Register, verify email, login, reset, logout via deployed auth",
+      "observed": "Local contract evidence only: apps/worker/test/http.test.ts runs register → verify (dev mailbox) → sign in → workspace through the real Worker; reset/logout not yet exercised end-to-end.",
+      "artifact_paths": [],
+      "blocker": "Verified email sender (EMAIL_API_KEY/EMAIL_FROM) and Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "AUTH-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Role permissions, removed member loses access, last owner protection",
+      "observed": "Local contract evidence only: scheduling.test.ts, assets-products.test.ts and http.test.ts (MCP access revoked immediately after membership removal) pass locally.",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "TEN-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Cross-tenant IDs fail on REST and MCP",
+      "observed": "Local contract evidence only: scheduling.test.ts tenancy cases and approvals-reports.test.ts (foreign report ID) pass locally; signed URL tamper test passes.",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "BILL-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Stripe invoices $49/$99/$199 with correct entitlements",
+      "observed": "Local contract evidence only: Quote amounts and webhook-driven entitlements verified with a Stripe API double (billing.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Stripe account, sandbox keys, Price IDs, webhook secret; approved tax/refund policy"
+    },
+    {
+      "requirement_id": "BILL-02",
+      "status": "PASS",
+      "environment": "local-workerd (Miniflare D1/R2/KV/Queues/DO)",
+      "command_or_flow": "Custom min/max, all 240 combinations, tampered input rejected (server quote)",
+      "observed": "Min 4900, max exactly 100000 cents, 27800 example, tampered fields/Price IDs rejected; MCP actors cannot quote",
+      "artifact_paths": [
+        "packages/domain/test/pricing.test.ts; apps/worker/test/billing.test.ts"
+      ],
+      "blocker": "Re-run against staging before release"
+    },
+    {
+      "requirement_id": "BILL-03",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Sandbox Checkout, renewal, failed card, Portal cancel, downgrade",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Stripe sandbox configuration and authorized test cards"
+    },
+    {
+      "requirement_id": "BILL-04",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Forged/repeated/reordered webhooks",
+      "observed": "Local contract evidence only: Forged signature rejected; duplicate event idempotent; stale event cannot restore canceled access (billing.test.ts with test-signed events).",
+      "artifact_paths": [],
+      "blocker": "Stripe sandbox webhook endpoint on staging"
+    },
+    {
+      "requirement_id": "QUOTA-01",
+      "status": "PASS",
+      "environment": "local-workerd (Miniflare D1/R2/KV/Queues/DO)",
+      "command_or_flow": "Last-unit parallel confirmations; multi-target all-or-none",
+      "observed": "6 parallel confirmations for 1 unit → exactly 1 reservation (direct D1 and via coordinator DO); failing multi-target batch leaves no rows",
+      "artifact_paths": [
+        "apps/worker/test/scheduling.test.ts"
+      ],
+      "blocker": "Re-run against staging before release"
+    },
+    {
+      "requirement_id": "QUOTA-02",
+      "status": "PASS",
+      "environment": "local-workerd (Miniflare D1/R2/KV/Queues/DO)",
+      "command_or_flow": "Retry once, failure releases, unknown retains, cancel releases",
+      "observed": "Retry after 429 commits once; validation failure releases; ambiguous keeps reservation; cancel before submit releases exactly once",
+      "artifact_paths": [
+        "apps/worker/test/dispatch.test.ts; scheduling.test.ts"
+      ],
+      "blocker": "Re-run against staging before release"
+    },
+    {
+      "requirement_id": "QUOTA-03",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Upgrade/downgrade/trial expiry/future period",
+      "observed": "Local contract evidence only: Upgrade grants difference only and downgrade waits for renewal (billing.test.ts double); trial 5 publications once (http.test.ts); future-cycle times rejected.",
+      "artifact_paths": [],
+      "blocker": "Stripe sandbox renewal cycle on staging"
+    },
+    {
+      "requirement_id": "CONN-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Five real OAuth connections, scopes, reconnect, revoke",
+      "observed": "Local contract evidence only: Adapter OAuth URL/exchange contract tests with fetch doubles (tests/unit/providers).",
+      "artifact_paths": [],
+      "blocker": "Developer apps and approvals for LinkedIn, Meta, TikTok, Google; callback URLs on staging"
+    },
+    {
+      "requirement_id": "LI-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "LinkedIn formats with real receipts",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "LinkedIn app with approved products, test member/Page"
+    },
+    {
+      "requirement_id": "FB-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Facebook Page formats with real IDs",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Meta app review, test Page"
+    },
+    {
+      "requirement_id": "IG-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Instagram image/carousel/Reel real media IDs",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Meta app review, Instagram professional test account"
+    },
+    {
+      "requirement_id": "TT-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "TikTok creator constraints, consent, final status",
+      "observed": "Local contract evidence only: Hosted approval rules (no default privacy, disabled interactions, stale creator settings rejected) pass with a TikTok API double (approvals-reports.test.ts).",
+      "artifact_paths": [],
+      "blocker": "TikTok Content Posting API approval/audit, test creator"
+    },
+    {
+      "requirement_id": "YT-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "YouTube resumable upload, visibility, native schedule",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Google Cloud project with YouTube Data API + OAuth verification, test channel"
+    },
+    {
+      "requirement_id": "MEDIA-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Uploads, invalid media, signed URL expiry, SSRF, wrong tenant",
+      "observed": "Local contract evidence only: Content-based validation, token binding, SSRF guard and signed-URL tamper checks pass locally (assets-products.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "SCH-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "ChatGPT closed + restart + redelivery → dispatch once",
+      "observed": "Local contract evidence only: Duplicate queue delivery submits once; cron leases and enqueues outbox (dispatch.test.ts, provider double).",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) and authorized provider account"
+    },
+    {
+      "requirement_id": "SCH-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Crash after provider acceptance → no blind retry",
+      "observed": "Local contract evidence only: Claim-lease expiry → outcome_unknown, never resubmitted; fencing rejects stale settlement (dispatch.test.ts, failure injection).",
+      "artifact_paths": [],
+      "blocker": "Live provider account on staging"
+    },
+    {
+      "requirement_id": "SCH-03",
+      "status": "PASS",
+      "environment": "local-workerd (Miniflare D1/R2/KV/Queues/DO)",
+      "command_or_flow": "UTC/IANA/local rendering across Melbourne DST",
+      "observed": "Nonexistent 2026-10-04 02:30 rejected; ambiguous 2026-04-05 02:30 needs a choice; AEST/AEDT offsets correct",
+      "artifact_paths": [
+        "packages/domain/test/rules.test.ts"
+      ],
+      "blocker": "Re-run against staging before release"
+    },
+    {
+      "requirement_id": "SCH-04",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Edit invalidates approval; cancel race; partial failure",
+      "observed": "Local contract evidence only: Revision change invalidates preview; reschedule resets TikTok approval; post-submission cancel is honest (scheduling.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "SCH-05",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "429 delay, revocation pause, DLQ, lateness alerts",
+      "observed": "Local contract evidence only: Retry-After honored; revocation → reconnect_required (dispatch.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Live provider accounts and alert transport on staging"
+    },
+    {
+      "requirement_id": "MCP-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Real ChatGPT authorization/discovery and tool calls",
+      "observed": "Local contract evidence only: DCR client → PKCE consent → resource-bound token → tools/list (17 tools) → tools/call, schema validation and insufficient_scope step-up pass through the real Worker (http.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Deployed HTTPS origin and ChatGPT developer test setup"
+    },
+    {
+      "requirement_id": "MCP-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Real conversation draft→preview→confirm→publish→report",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "ChatGPT test workspace + live provider account on staging"
+    },
+    {
+      "requirement_id": "MCP-03",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "No plans/upsell/payment in MCP or OAuth",
+      "observed": "Local contract evidence only: Tool list has no purchase tools; consent HTML contains no price/plan/checkout text; get_workspace_status returns no purchase links (http.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Review in real ChatGPT on staging"
+    },
+    {
+      "requirement_id": "MCP-04",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Directory review; install-to-payment flow",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "EXTERNAL POLICY BLOCKER: OpenAI digital-subscription restriction (handoff/docs/03-CHATGPT.md); directory submission not made"
+    },
+    {
+      "requirement_id": "AI-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Auto learn with citations and review",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "RESEARCH_API_KEY and AI_PROVIDER_API_KEY with budget limits"
+    },
+    {
+      "requirement_id": "AI-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Competitor/similar research with real sources",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Licensed search API and model credentials"
+    },
+    {
+      "requirement_id": "AI-03",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Prompt injection cannot act; budgets enforced",
+      "observed": "Local contract evidence only: Design: no tools given to the model, server-side citation check, proposals never auto-approved, per-cycle caps enforced in requestResearch.",
+      "artifact_paths": [],
+      "blocker": "Model credentials for adversarial test set"
+    },
+    {
+      "requirement_id": "MET-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Metrics reconcile with provider values",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Live provider accounts with analytics scopes"
+    },
+    {
+      "requirement_id": "REP-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "CSV/PDF with real data, signed expiry",
+      "observed": "Local contract evidence only: CSV (formula-injection guarded, \"Not available\" for null) and PDF generated into R2 and downloaded via signed URL; cross-tenant report access denied (approvals-reports.test.ts).",
+      "artifact_paths": [],
+      "blocker": "Real provider metrics on staging"
+    },
+    {
+      "requirement_id": "UI-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Exactly five menus, real actions, no sample metrics",
+      "observed": "Local contract evidence only: See web tests and frontend source; browser verification against a deployed environment pending.",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "UI-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Responsive/light/dark/state screenshots",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Browser run against staging with controlled test data"
+    },
+    {
+      "requirement_id": "OPS-01",
+      "status": "BLOCKED",
+      "environment": "local-workerd (Miniflare D1/R2/KV/Queues/DO)",
+      "command_or_flow": "Build, typecheck, lint, migrations, tests, deployed smoke",
+      "observed": "typecheck: exit 0; lint: exit 0; unit + provider contract + migration tests: exit 0; workerd contract/integration tests: exit 0; handoff reference tests: exit 0; web tests: exit 0; web build: exit 0; worker bundle (dry run): exit 0",
+      "artifact_paths": [
+        "evidence/acceptance.json"
+      ],
+      "blocker": "Deployed smoke checks (scripts/verify-live.mjs) require staging"
+    },
+    {
+      "requirement_id": "OPS-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Backup restore, queue replay, rollback",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
+    },
+    {
+      "requirement_id": "OPS-03",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "Token rotation, log redaction, retention, alert delivery",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) and alert transport"
+    },
+    {
+      "requirement_id": "PERF-01",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "100 workspaces × 10 concurrent confirmations",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Scoped staging resources for load test"
+    },
+    {
+      "requirement_id": "PERF-02",
+      "status": "BLOCKED",
+      "environment": "not-provisioned",
+      "command_or_flow": "p95 API latency and dispatch lateness",
+      "observed": "Not executed: requires staging and external accounts.",
+      "artifact_paths": [],
+      "blocker": "Staging load test"
+    }
+  ]
+}

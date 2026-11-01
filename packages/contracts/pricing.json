@@ -1,0 +1,18 @@
+{
+  "version": "2026-10-30.1",
+  "currency": "USD",
+  "interval": "month",
+  "taxIncluded": false,
+  "plans": {
+    "basic": {"priceCents": 4900, "posts": 20, "products": 1, "autoLearn": false, "competitorCheck": false, "similarResearch": false},
+    "standard": {"priceCents": 9900, "posts": 60, "products": 3, "autoLearn": true, "competitorCheck": true, "similarResearch": true},
+    "premium": {"priceCents": 19900, "posts": 120, "products": 10, "autoLearn": true, "competitorCheck": true, "similarResearch": true}
+  },
+  "custom": {
+    "baseCents": 4900,
+    "maximumCents": 100000,
+    "postTiers": {"20": 0, "60": 3000, "120": 7000, "300": 17000, "600": 30000, "1000": 42000},
+    "productTiers": {"1": 0, "3": 2000, "10": 6000, "25": 11000, "50": 16000},
+    "features": {"autoLearn": 9900, "competitorCheck": 12900, "similarResearch": 14300}
+  }
+}

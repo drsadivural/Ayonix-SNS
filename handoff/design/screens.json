@@ -1,0 +1,54 @@
+[
+  {
+    "name": "dashboard",
+    "file": "dashboard.png"
+  },
+  {
+    "name": "connectors",
+    "file": "connectors.png"
+  },
+  {
+    "name": "billings",
+    "file": "billings.png"
+  },
+  {
+    "name": "reports",
+    "file": "reports.png"
+  },
+  {
+    "name": "settings",
+    "file": "settings.png"
+  },
+  {
+    "name": "register",
+    "file": "register.png"
+  },
+  {
+    "name": "onboarding",
+    "file": "onboarding.png"
+  },
+  {
+    "name": "chatgpt-consent",
+    "file": "chatgpt-consent.png"
+  },
+  {
+    "name": "schedule",
+    "file": "schedule.png"
+  },
+  {
+    "name": "tiktok-approval",
+    "file": "tiktok-approval.png"
+  },
+  {
+    "name": "post-details",
+    "file": "post-details.png"
+  },
+  {
+    "name": "dashboard-dark",
+    "file": "dashboard-dark.png"
+  },
+  {
+    "name": "dashboard-mobile",
+    "file": "dashboard-mobile.png"
+  }
+]

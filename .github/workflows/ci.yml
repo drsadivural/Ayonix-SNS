@@ -1,0 +1,30 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm run test:unit
+      - run: npm run test:contract
+      - run: npm run test:reference
+      - run: npm run test -w @ayonix/web
+      - run: npm run build -w @ayonix/web
+      - run: npx wrangler deploy --dry-run --outdir dist-worker
+      # CI never deploys, never publishes customer posts and never uses live provider credentials.

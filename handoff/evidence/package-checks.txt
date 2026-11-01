@@ -1,0 +1,43 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> ayonix-sns-implementation-package@1.0.0 test
+> node --test tests/domain.test.mjs && python3 tests/schema_test.py && python3 scripts/check_package.py
+
+✔ fixed plans match the requested price/capacity mapping (1.064442ms)
+✔ all 240 valid custom selections are bounded, monotonic and deterministic (6.031835ms)
+✔ custom minimum, exact maximum and documented example (0.278479ms)
+✔ reject browser price tampering and ambiguous checkbox inputs (0.475308ms)
+✔ quote hash unaffected by input field ordering (0.146105ms)
+✔ atomic-service reference reserves entire multi-target cost or rejects (1.076891ms)
+✔ bad quota counters and target counts rejected (0.291718ms)
+✔ published commits one reservation; definite failures release; unknown retains (0.388941ms)
+✔ terminal and unknown publication states cannot be blindly replayed (0.32045ms)
+✔ explicit future UTC and valid zone accepted (13.4328ms)
+✔ past, normalized invalid calendar, offset-free and unknown-zone inputs fail (0.661371ms)
+✔ count destination posts, reject duplicate destinations and invalid formats (0.312248ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 118.553542
+test_blank_receipt_rejected (__main__.Constraints.test_blank_receipt_rejected) ... ok
+test_counter_cannot_exceed_allowance (__main__.Constraints.test_counter_cannot_exceed_allowance) ... ok
+test_cross_tenant_connection (__main__.Constraints.test_cross_tenant_connection) ... ok
+test_cross_tenant_period (__main__.Constraints.test_cross_tenant_period) ... ok
+test_cross_tenant_product (__main__.Constraints.test_cross_tenant_product) ... ok
+test_idempotency_key_scoped (__main__.Constraints.test_idempotency_key_scoped) ... ok
+test_ledger_cannot_use_other_period (__main__.Constraints.test_ledger_cannot_use_other_period) ... ok
+test_ledger_reservation_unique (__main__.Constraints.test_ledger_reservation_unique) ... ok
+test_outbox_revision_unique (__main__.Constraints.test_outbox_revision_unique) ... ok
+test_published_requires_receipt (__main__.Constraints.test_published_requires_receipt) ... ok
+test_two_database_clients_compete_for_last_unit (__main__.Constraints.test_two_database_clients_compete_for_last_unit) ... ok
+test_webhook_id_unique (__main__.Constraints.test_webhook_id_unique) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.040s
+
+OK
+PASS package integrity: 12 docs, 17 tool schemas, 13 PNG mockups, required artifacts and links

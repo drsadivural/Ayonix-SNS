@@ -1,0 +1,83 @@
+{
+  // Ayonix-SNS Worker: REST API, MCP endpoint, OAuth, webhooks, scheduler and
+  // the static React app. Resource IDs are intentionally absent: wrangler's
+  // automatic provisioning creates D1/R2/KV on first deploy and writes the real
+  // IDs back. Never paste invented IDs here (docs/09-OPERATOR-SETUP.md).
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ayonix-sns",
+  "main": "apps/worker/src/index.ts",
+  "compatibility_date": "2026-10-01",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "apps/web/dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": [
+      "/api/*", "/mcp", "/mcp/*", "/oauth/*", "/authorize", "/.well-known/*",
+      "/webhooks/*", "/health/*", "/auth/*", "/u/*", "/dev/*"
+    ]
+  },
+  "vars": {
+    "APP_ORIGIN": "http://localhost:8787",
+    "ENVIRONMENT": "development",
+    "DEFAULT_TIMEZONE": "Australia/Melbourne",
+    "TOKEN_ENCRYPTION_KEY_VERSION": "1",
+    "LINKEDIN_API_VERSION": "",
+    "META_GRAPH_VERSION": "",
+    "AI_MODEL": "claude-opus-5-5",
+    "EMAIL_FROM": ""
+  },
+  "d1_databases": [
+    { "binding": "DB", "database_name": "ayonix-sns", "migrations_dir": "migrations" }
+  ],
+  "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "ayonix-sns-media" }],
+  "kv_namespaces": [{ "binding": "OAUTH_KV" }],
+  "durable_objects": {
+    "bindings": [{ "name": "COORDINATOR", "class_name": "WorkspaceCoordinator" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["WorkspaceCoordinator"] }],
+  "queues": {
+    "producers": [
+      { "binding": "PUBLISH_QUEUE", "queue": "ayonix-sns-publish" },
+      { "binding": "JOBS_QUEUE", "queue": "ayonix-sns-jobs" }
+    ],
+    "consumers": [
+      { "queue": "ayonix-sns-publish", "max_batch_size": 10, "max_retries": 5, "dead_letter_queue": "ayonix-sns-publish-dlq" },
+      { "queue": "ayonix-sns-jobs", "max_batch_size": 5, "max_retries": 3, "dead_letter_queue": "ayonix-sns-jobs-dlq" },
+      { "queue": "ayonix-sns-publish-dlq", "max_batch_size": 10, "max_retries": 0 }
+    ]
+  },
+  "triggers": { "crons": ["* * * * *", "17 3 * * *"] },
+  "env": {
+    "staging": {
+      "name": "ayonix-sns-staging",
+      "vars": {
+        "APP_ORIGIN": "https://staging.sns.ayonix.com",
+        "ENVIRONMENT": "staging",
+        "DEFAULT_TIMEZONE": "Australia/Melbourne",
+        "TOKEN_ENCRYPTION_KEY_VERSION": "1",
+        "LINKEDIN_API_VERSION": "",
+        "META_GRAPH_VERSION": "",
+        "AI_MODEL": "claude-opus-5-5",
+        "EMAIL_FROM": ""
+      },
+      "d1_databases": [{ "binding": "DB", "database_name": "ayonix-sns-staging", "migrations_dir": "migrations" }],
+      "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "ayonix-sns-staging-media" }],
+      "kv_namespaces": [{ "binding": "OAUTH_KV" }],
+      "durable_objects": { "bindings": [{ "name": "COORDINATOR", "class_name": "WorkspaceCoordinator" }] },
+      "queues": {
+        "producers": [
+          { "binding": "PUBLISH_QUEUE", "queue": "ayonix-sns-staging-publish" },
+          { "binding": "JOBS_QUEUE", "queue": "ayonix-sns-staging-jobs" }
+        ],
+        "consumers": [
+          { "queue": "ayonix-sns-staging-publish", "max_batch_size": 10, "max_retries": 5, "dead_letter_queue": "ayonix-sns-staging-publish-dlq" },
+          { "queue": "ayonix-sns-staging-jobs", "max_batch_size": 5, "max_retries": 3, "dead_letter_queue": "ayonix-sns-staging-jobs-dlq" },
+          { "queue": "ayonix-sns-staging-publish-dlq", "max_batch_size": 10, "max_retries": 0 }
+        ]
+      },
+      "triggers": { "crons": ["* * * * *", "17 3 * * *"] }
+    }
+  }
+}

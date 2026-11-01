@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ayonix-SNS — Design kit</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f5f8fc;color:#10233f;font:15px system-ui,sans-serif}header{padding:25px 4vw;background:#fff;border-bottom:1px solid #e1e8f1;display:flex;gap:24px;align-items:center;flex-wrap:wrap}h1{font-size:24px;margin:0}header span{color:#66788f}main{max-width:1500px;margin:auto;padding:25px}nav{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:24px}button,select{font:inherit;min-height:44px;border:1px solid #d5e1f2;border-radius:9px;background:#fff;padding:10px 14px;color:#10233f;cursor:pointer}button:focus-visible,select:focus-visible,input:focus-visible{outline:3px solid #176bff;outline-offset:3px}button[aria-pressed=true]{background:#176bff;color:#fff}.preview{background:#fff;border:1px solid #e1e8f1;border-radius:18px;overflow:hidden}.preview img{width:100%;display:block}section{background:white;border:1px solid #e1e8f1;border-radius:18px;margin-top:24px;padding:25px}h2{margin:0 0 12px;font-size:22px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:25px}label{display:block;margin:16px 0}select{display:block;width:100%;margin-top:9px}input{width:20px;height:20px;vertical-align:middle;margin-right:10px}.price{font-size:36px;font-weight:750;color:#176bff}.muted{color:#66788f}output{display:block;margin:20px 0}a{color:#176bff}@media(max-width:650px){main{padding:12px}.grid{grid-template-columns:1fr}header{padding:20px}section{padding:18px}}</style>
+<header><h1>Ayonix-SNS</h1><span>Implementation design kit · Example data · No social accounts connected</span></header><main>
+<nav aria-label="Design screen selector"><button class="screen" data-screen="dashboard">Dashboard</button><button class="screen" data-screen="connectors">Connectors</button><button class="screen" data-screen="billings">Billings</button><button class="screen" data-screen="reports">Reports</button><button class="screen" data-screen="settings">Settings</button><button class="screen" data-screen="register">Register</button><button class="screen" data-screen="onboarding">Onboarding</button><button class="screen" data-screen="chatgpt-consent">Chatgpt Consent</button><button class="screen" data-screen="schedule">Schedule</button><button class="screen" data-screen="tiktok-approval">Tiktok Approval</button><button class="screen" data-screen="post-details">Post Details</button><button class="screen" data-screen="dashboard-dark">Dashboard Dark</button><button class="screen" data-screen="dashboard-mobile">Dashboard Mobile</button></nav>
+<div class="preview"><img id="mockup" src="dashboard.png" alt="Dashboard design mockup with example statistics and schedule"></div>
+<section><h2>Custom plan calculator</h2><p class="muted">Local pricing demonstration. No payment is processed. All prices USD/month before tax.</p>
+<div class="grid"><div><label for="posts">Publications per month<select id="posts"></select></label><label for="products">Active products<select id="products"></select></label></div><div>
+<label><input type="checkbox" id="autoLearn">Auto learn <span class="muted">+$99</span></label><label><input type="checkbox" id="competitorCheck">Competitor check <span class="muted">+$129</span></label><label><input type="checkbox" id="similarResearch">Similar-product research <span class="muted">+$143</span></label>
+<output id="total" class="price" aria-live="polite">$49 / month</output><div class="muted" id="breakdown"></div><p>Maximum valid configuration: $1,000/month before tax.</p><button id="all">Select all highest tiers</button><button id="reset">Reset</button></div></div></section>
+<section><h2>Implementation boundary</h2><p>These images are mockups. Production must use real APIs and actual metrics. The custom calculator is a local design interaction; server-authoritative billing still requires implementation and Stripe validation.</p><p>Website subscription and ChatGPT authorization are separate. Current ChatGPT plugin policy does not permit initiating new digital subscriptions from the plugin.</p><p><a href="design-overview.pdf">Open all 13 screens as PDF</a></p></section>
+<script id="catalog" type="application/json">{
+  "version": "2026-10-30.1",
+  "currency": "USD",
+  "interval": "month",
+  "taxIncluded": false,
+  "plans": {
+    "basic": {"priceCents": 4900, "posts": 20, "products": 1, "autoLearn": false, "competitorCheck": false, "similarResearch": false},
+    "standard": {"priceCents": 9900, "posts": 60, "products": 3, "autoLearn": true, "competitorCheck": true, "similarResearch": true},
+    "premium": {"priceCents": 19900, "posts": 120, "products": 10, "autoLearn": true, "competitorCheck": true, "similarResearch": true}
+  },
+  "custom": {
+    "baseCents": 4900,
+    "maximumCents": 100000,
+    "postTiers": {"20": 0, "60": 3000, "120": 7000, "300": 17000, "600": 30000, "1000": 42000},
+    "productTiers": {"1": 0, "3": 2000, "10": 6000, "25": 11000, "50": 16000},
+    "features": {"autoLearn": 9900, "competitorCheck": 12900, "similarResearch": 14300}
+  }
+}
+</script><script>
+const catalog=JSON.parse(document.querySelector('#catalog').textContent),custom=catalog.custom;
+const byId=id=>document.getElementById(id);
+for(const [id,tiers] of [['posts',custom.postTiers],['products',custom.productTiers]])for(const [value,cents]of Object.entries(tiers)){const o=document.createElement('option');o.value=value;o.textContent=value+' (+'+new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(cents/100)+')';byId(id).append(o);}
+function update(){let cents=custom.baseCents+custom.postTiers[byId('posts').value]+custom.productTiers[byId('products').value];for(const[key,amount]of Object.entries(custom.features))if(byId(key).checked)cents+=amount;if(!Number.isSafeInteger(cents)||cents>custom.maximumCents)throw Error('Invalid catalog selection');byId('total').textContent=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(cents/100)+' / month';byId('breakdown').textContent=byId('posts').value+' destination publications · '+byId('products').value+' active products · Base $49 included';}
+document.querySelectorAll('select,input').forEach(x=>x.addEventListener('change',update));
+byId('all').addEventListener('click',()=>{byId('posts').value='1000';byId('products').value='50';Object.keys(custom.features).forEach(k=>byId(k).checked=true);update();});
+byId('reset').addEventListener('click',()=>{byId('posts').value='20';byId('products').value='1';Object.keys(custom.features).forEach(k=>byId(k).checked=false);update();});
+document.querySelectorAll('.screen').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.screen').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));byId('mockup').src=b.dataset.screen+'.png';byId('mockup').alt=b.textContent+' design mockup; example data only';}));
+document.querySelector('.screen').setAttribute('aria-pressed','true');update();
+</script></main></html>

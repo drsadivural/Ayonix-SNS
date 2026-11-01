@@ -1,0 +1,121 @@
+/* Design tokens. Light is the default; dark follows the system preference
+   unless a manual choice is stored (html[data-theme]). Text/background pairs
+   were chosen for WCAG AA contrast (>= 4.5:1 for body text). */
+:root {
+  color-scheme: light;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --azure: #176bff;
+  --navy: #10233f;
+
+  --bg: #f5f8fc;
+  --surface: #ffffff;
+  --surface-2: #f5f8fc;
+  --surface-hover: #f0f5fc;
+  --sidebar: #ffffff;
+  --border: #e1e8f1;
+  --border-strong: #c9d6e8;
+  --text: #10233f;
+  --text-muted: #56687f;
+  --accent: #176bff;
+  --accent-text: #1160ea;
+  --on-accent: #ffffff;
+  --accent-soft: #eaf2ff;
+  --accent-soft-text: #1059d6;
+  --focus: #176bff;
+  --shadow: 0 1px 2px rgba(16, 35, 63, 0.04), 0 4px 16px rgba(16, 35, 63, 0.04);
+  --shadow-lg: 0 12px 40px rgba(16, 35, 63, 0.18);
+  --overlay: rgba(16, 35, 63, 0.38);
+
+  --success-bg: #e6f6ee;
+  --success-text: #0b6b43;
+  --warning-bg: #fff4e0;
+  --warning-text: #8a4b00;
+  --danger-bg: #fdecec;
+  --danger-text: #a61b1b;
+  --info-bg: #eaf2ff;
+  --info-text: #0f4fc2;
+  --neutral-bg: #eef2f7;
+  --neutral-text: #44566e;
+
+  --chart-line: #176bff;
+  --chart-area: rgba(23, 107, 255, 0.1);
+  --chart-grid: #e6edf6;
+  --bar-track: #e3ecf9;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --sidebar-width: 218px;
+  --touch: 44px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --bg: #0b1628;
+    --surface: #13233b;
+    --surface-2: #0f1d33;
+    --surface-hover: #182b47;
+    --sidebar: #0f1d33;
+    --border: #22344f;
+    --border-strong: #2f4566;
+    --text: #e8eef7;
+    --text-muted: #a3b2c7;
+    --accent-text: #8ab6ff;
+    --accent-soft: #1b355e;
+    --accent-soft-text: #a9c8ff;
+    --focus: #8ab6ff;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --overlay: rgba(2, 8, 18, 0.66);
+    --success-bg: #0f3b2a;
+    --success-text: #7be0ae;
+    --warning-bg: #3d2a0a;
+    --warning-text: #ffc266;
+    --danger-bg: #451a1f;
+    --danger-text: #ff9a9a;
+    --info-bg: #16325c;
+    --info-text: #a9c8ff;
+    --neutral-bg: #22344f;
+    --neutral-text: #c3cfdf;
+    --chart-line: #5b9bff;
+    --chart-area: rgba(91, 155, 255, 0.22);
+    --chart-grid: #22344f;
+    --bar-track: #22344f;
+  }
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0b1628;
+  --surface: #13233b;
+  --surface-2: #0f1d33;
+  --surface-hover: #182b47;
+  --sidebar: #0f1d33;
+  --border: #22344f;
+  --border-strong: #2f4566;
+  --text: #e8eef7;
+  --text-muted: #a3b2c7;
+  --accent-text: #8ab6ff;
+  --accent-soft: #1b355e;
+  --accent-soft-text: #a9c8ff;
+  --focus: #8ab6ff;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --overlay: rgba(2, 8, 18, 0.66);
+  --success-bg: #0f3b2a;
+  --success-text: #7be0ae;
+  --warning-bg: #3d2a0a;
+  --warning-text: #ffc266;
+  --danger-bg: #451a1f;
+  --danger-text: #ff9a9a;
+  --info-bg: #16325c;
+  --info-text: #a9c8ff;
+  --neutral-bg: #22344f;
+  --neutral-text: #c3cfdf;
+  --chart-line: #5b9bff;
+  --chart-area: rgba(91, 155, 255, 0.22);
+  --chart-grid: #22344f;
+  --bar-track: #22344f;
+}

@@ -1,0 +1,306 @@
+[
+  {
+    "requirement_id": "AUTH-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "AUTH-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "TEN-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "BILL-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "BILL-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "BILL-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "BILL-04",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "QUOTA-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "QUOTA-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "QUOTA-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "CONN-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "LI-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "FB-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "IG-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "TT-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "YT-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MEDIA-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "SCH-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "SCH-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "SCH-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "SCH-04",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "SCH-05",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MCP-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MCP-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MCP-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MCP-04",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "AI-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "AI-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "AI-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "MET-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "REP-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "UI-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "UI-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "OPS-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "OPS-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "OPS-03",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "PERF-01",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  },
+  {
+    "requirement_id": "PERF-02",
+    "status": "BLOCKED",
+    "environment": "not-provisioned",
+    "observed": "Application implementation and configured authorized staging dependencies required",
+    "artifact_paths": [],
+    "blocker": "See docs/09-OPERATOR-SETUP.md and evidence/STATUS.md"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "prepared_at_utc": "2026-10-30T10:09:16.641236+00:00",
+  "overall_product_status": "PARTIAL",
+  "package_verification": "PASS",
+  "node_tests_passed": 12,
+  "sqlite_tests_passed": 12,
+  "custom_configurations_checked": 240,
+  "tool_schemas": 17,
+  "deterministic_mockups": 13,
+  "live_acceptance_gates_blocked": 38,
+  "live_posting_tested": false,
+  "live_billing_tested": false,
+  "claude_code_executed": false,
+  "browser_interaction_tested": false,
+  "test_output": "evidence/package-checks.txt"
+}
