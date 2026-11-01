@@ -1,6 +1,6 @@
 # Verification status
 
-Generated 2026-11-01T06:13:05.012Z at commit 8acd7fa27a86343570c78999b15faed7c5ab6435 by `node scripts/evidence.mjs`.
+Generated 2026-11-01T06:14:19.940Z at commit 4f96e15ca9884c3b614cba9c1763874d5c62ef2f by `node scripts/evidence.mjs`.
 
 **Overall: PARTIAL.** The application is implemented and verified locally (workerd with real local D1/R2/KV/Queues/Durable Objects). No staging deployment, social provider app, Stripe sandbox, email sender, research/model credential or ChatGPT test workspace was available in this run, so every live gate is BLOCKED. The original ChatGPT install→subscribe flow is an external policy BLOCKER (MCP-04).
 
@@ -52,8 +52,8 @@ Counts: BLOCKED 34, PASS 4 (of 38).
 | AI-03 | BLOCKED | not-provisioned | Local contract evidence only: Design: no tools given to the model, server-side citation check, proposals never auto-approved, per-cycle caps enforced in requestResearch. **Blocker:** Model credentials for adversarial test set |
 | MET-01 | BLOCKED | not-provisioned | Not executed: requires staging and external accounts. **Blocker:** Live provider accounts with analytics scopes |
 | REP-01 | BLOCKED | not-provisioned | Local contract evidence only: CSV (formula-injection guarded, "Not available" for null) and PDF generated into R2 and downloaded via signed URL; cross-tenant report access denied (approvals-reports.test.ts). **Blocker:** Real provider metrics on staging |
-| UI-01 | BLOCKED | not-provisioned | Local contract evidence only: See web tests and frontend source; browser verification against a deployed environment pending. **Blocker:** Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) |
-| UI-02 | BLOCKED | not-provisioned | Not executed: requires staging and external accounts. **Blocker:** Browser run against staging with controlled test data |
+| UI-01 | BLOCKED | not-provisioned | Local contract evidence only: Web tests assert five nav items in sidebar and mobile nav; headless Chromium run against local wrangler dev shows API-driven empty/unconfigured states, no example data (evidence/screenshots/). **Blocker:** Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) |
+| UI-02 | BLOCKED | not-provisioned | Local contract evidence only: Partial local capture: 15 screenshots (dashboard/billings at 1440/834/390, five menus light, dashboard/connectors dark, auth/onboarding) with no horizontal overflow detected (evidence/screenshots/). **Blocker:** Full matrix (all screens × 1440/834/390 × light/dark × loading/error) against staging with controlled test data; contrast and keyboard audit |
 | OPS-01 | BLOCKED | local-workerd (Miniflare D1/R2/KV/Queues/DO) | typecheck: exit 0; lint: exit 0; unit + provider contract + migration tests: exit 0; workerd contract/integration tests: exit 0; handoff reference tests: exit 0; web tests: exit 0; web build: exit 0; worker bundle (dry run): exit 0 **Blocker:** Deployed smoke checks (scripts/verify-live.mjs) require staging |
 | OPS-02 | BLOCKED | not-provisioned | Not executed: requires staging and external accounts. **Blocker:** Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) |
 | OPS-03 | BLOCKED | not-provisioned | Not executed: requires staging and external accounts. **Blocker:** Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md) and alert transport |

@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-01T06:13:05.012Z",
-  "commit_sha": "8acd7fa27a86343570c78999b15faed7c5ab6435",
+  "generated_at": "2026-11-01T06:14:19.940Z",
+  "commit_sha": "4f96e15ca9884c3b614cba9c1763874d5c62ef2f",
   "overall": "PARTIAL",
   "counts": {
     "BLOCKED": 34,
@@ -11,7 +11,7 @@
       "name": "typecheck",
       "command": "npm run typecheck",
       "exit_code": 0,
-      "duration_ms": 8036,
+      "duration_ms": 8062,
       "tests_passed": null,
       "tail": "> @ayonix/web@0.1.0 typecheck\n> tsc -p tsconfig.json --noEmit\n\n\n> @ayonix/worker@0.1.0 typecheck\n> tsc -p tsconfig.json"
     },
@@ -19,7 +19,7 @@
       "name": "lint",
       "command": "npm run lint",
       "exit_code": 0,
-      "duration_ms": 5340,
+      "duration_ms": 5355,
       "tests_passed": null,
       "tail": "> ayonix-sns@0.1.0 lint\n> eslint ."
     },
@@ -27,15 +27,15 @@
       "name": "unit + provider contract + migration tests",
       "command": "npx vitest run --project unit",
       "exit_code": 0,
-      "duration_ms": 1261,
+      "duration_ms": 1252,
       "tests_passed": 117,
-      "tail": "\n\n Test Files  9 passed (9)\n      Tests  117 passed (117)\n   Start at  06:13:18\n   Duration  802ms (transform 388ms, setup 0ms, import 645ms, tests 524ms, environment 1ms)"
+      "tail": "\n\n Test Files  9 passed (9)\n      Tests  117 passed (117)\n   Start at  06:14:33\n   Duration  796ms (transform 360ms, setup 0ms, import 634ms, tests 504ms, environment 1ms)"
     },
     {
       "name": "workerd contract/integration tests",
       "command": "npm run test -w @ayonix/worker",
       "exit_code": 0,
-      "duration_ms": 16198,
+      "duration_ms": 16150,
       "tests_passed": 46,
       "tail": "Sourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/server.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/experimental/tasks/helpers.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/webStandardStreamableHttp.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/shared/mediaType.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/requestBody.js\" points to missing source files\nSourcemap for \"/home/azureuser/projects/Ayonix-SNS/node_modules/@modelcontextprotocol/sdk/dist/esm/server/sseKeepAlive.js\" points to missing source files"
     },
@@ -43,7 +43,7 @@
       "name": "handoff reference tests",
       "command": "npm run test:reference",
       "exit_code": 0,
-      "duration_ms": 373,
+      "duration_ms": 377,
       "tests_passed": null,
       "tail": "test_webhook_id_unique (__main__.Constraints.test_webhook_id_unique) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.011s\n\nOK"
     },
@@ -51,15 +51,15 @@
       "name": "web tests",
       "command": "npm run test -w @ayonix/web",
       "exit_code": 0,
-      "duration_ms": 2397,
+      "duration_ms": 2396,
       "tests_passed": 22,
-      "tail": "\n\n Test Files  5 passed (5)\n      Tests  22 passed (22)\n   Start at  06:13:36\n   Duration  2.02s (transform 198ms, setup 419ms, import 350ms, tests 797ms, environment 3.24s)"
+      "tail": "\n\n Test Files  5 passed (5)\n      Tests  22 passed (22)\n   Start at  06:14:51\n   Duration  2.01s (transform 203ms, setup 377ms, import 375ms, tests 761ms, environment 3.16s)"
     },
     {
       "name": "web build",
       "command": "npm run build -w @ayonix/web",
       "exit_code": 0,
-      "duration_ms": 4056,
+      "duration_ms": 4054,
       "tests_passed": null,
       "tail": "dist/assets/inter-latin-ext-700-normal-TidjK2hL.woff       48.63 kB\ndist/assets/inter-latin-ext-600-normal-CIVaiw4L.woff       48.66 kB\ndist/assets/index-BTTEw1lF.css                             33.61 kB │ gzip:   6.81 kB\ndist/assets/index-DEi3iFQF.js                             478.06 kB │ gzip: 141.99 kB\n\n✓ built in 169ms"
     },
@@ -67,7 +67,7 @@
       "name": "worker bundle (dry run)",
       "command": "npx wrangler deploy --dry-run --outdir /tmp/ayonix-worker-dryrun",
       "exit_code": 0,
-      "duration_ms": 2196,
+      "duration_ms": 2088,
       "tests_passed": null,
       "tail": "--dry-run: exiting now.\n\n\u001b[33m▲ \u001b[43;33m[\u001b[43;30mWARNING\u001b[43;33m]\u001b[0m \u001b[1mMultiple environments are defined in the Wrangler configuration file, but no target environment was specified for the deploy command.\u001b[0m\n\n  To avoid unintentional changes to the wrong environment, it is recommended to explicitly specify the target environment using the `-e|--env` flag or CLOUDFLARE_ENV env variable.\n  If your intention is to use the top-level environment of your configuration simply pass an empty string to the flag to target such environment. For example `--env=\"\"`."
     }
@@ -365,7 +365,7 @@
       "status": "BLOCKED",
       "environment": "not-provisioned",
       "command_or_flow": "Exactly five menus, real actions, no sample metrics",
-      "observed": "Local contract evidence only: See web tests and frontend source; browser verification against a deployed environment pending.",
+      "observed": "Local contract evidence only: Web tests assert five nav items in sidebar and mobile nav; headless Chromium run against local wrangler dev shows API-driven empty/unconfigured states, no example data (evidence/screenshots/).",
       "artifact_paths": [],
       "blocker": "Staging deployment, scoped Cloudflare access and domain (docs/09-OPERATOR-SETUP.md)"
     },
@@ -374,9 +374,9 @@
       "status": "BLOCKED",
       "environment": "not-provisioned",
       "command_or_flow": "Responsive/light/dark/state screenshots",
-      "observed": "Not executed: requires staging and external accounts.",
+      "observed": "Local contract evidence only: Partial local capture: 15 screenshots (dashboard/billings at 1440/834/390, five menus light, dashboard/connectors dark, auth/onboarding) with no horizontal overflow detected (evidence/screenshots/).",
       "artifact_paths": [],
-      "blocker": "Browser run against staging with controlled test data"
+      "blocker": "Full matrix (all screens × 1440/834/390 × light/dark × loading/error) against staging with controlled test data; contrast and keyboard audit"
     },
     {
       "requirement_id": "OPS-01",
