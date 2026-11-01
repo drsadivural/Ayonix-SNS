@@ -4,7 +4,7 @@ Date: 2026-11-01. Status: accepted for implementation; external gates open.
 
 ## Runtime and hosting
 - Cloudflare Workers (`compatibility_date` 2026-10-01, `nodejs_compat`, `global_fetch_strictly_public`), D1 (system of record), R2 (media/reports/exports, `ws/{workspace}/` prefixes), KV (OAuth grants/tokens of the MCP authorization server, stored hashed/encrypted by the library), Queues (publish + jobs, each with DLQ), one Durable Object per workspace (`WorkspaceCoordinator`) serializing schedule mutations and dispatch claims, Cron every minute (outbox scan, lease sweep, lag alerts) and daily (metrics, retention).
-- Resource IDs are not committed. `wrangler deploy` auto-provisions D1/R2/KV and writes IDs back; queues are created by `scripts/provision-staging.sh`.
+- Resource IDs are not committed. `wrangler deploy` auto-provisions D1/R2/KV and writes IDs back; queues are created by `scripts/provision.sh`.
 
 ## Pinned versions (package-lock.json is authoritative)
 wrangler 4.156.0 · hono 4.13.16 · better-auth 1.7.14 · @cloudflare/workers-oauth-provider 1.2.4 · @modelcontextprotocol/sdk 1.32.2 · @cfworker/json-schema 4.1.4 · stripe 23.1.0 (API 2026-10-28.endive) · @anthropic-ai/sdk 1.3.0 · zod 4.4.3 · typescript 6.0.3 (typescript-eslint 8.72.1 does not support TS 7 yet) · vitest 4.1.12 · @cloudflare/vitest-plugin 1.4.11 (successor of the deprecated vitest-pool-workers) · React 19.3.1 · Vite 8.3.5.

@@ -50,6 +50,36 @@
   },
   "triggers": { "crons": ["* * * * *", "17 3 * * *"] },
   "env": {
+    "production": {
+      "name": "ayonix-sns",
+      "routes": [{ "pattern": "sns.ayonix.com", "custom_domain": true }],
+      "vars": {
+        "APP_ORIGIN": "https://sns.ayonix.com",
+        "ENVIRONMENT": "production",
+        "DEFAULT_TIMEZONE": "Australia/Melbourne",
+        "TOKEN_ENCRYPTION_KEY_VERSION": "1",
+        "LINKEDIN_API_VERSION": "",
+        "META_GRAPH_VERSION": "",
+        "AI_MODEL": "claude-opus-5-5",
+        "EMAIL_FROM": "Ayonix-SNS <no-reply@ayonix.com>"
+      },
+      "d1_databases": [{ "binding": "DB", "database_name": "ayonix-sns", "migrations_dir": "migrations" }],
+      "r2_buckets": [{ "binding": "MEDIA", "bucket_name": "ayonix-sns-media" }],
+      "kv_namespaces": [{ "binding": "OAUTH_KV" }],
+      "durable_objects": { "bindings": [{ "name": "COORDINATOR", "class_name": "WorkspaceCoordinator" }] },
+      "queues": {
+        "producers": [
+          { "binding": "PUBLISH_QUEUE", "queue": "ayonix-sns-publish" },
+          { "binding": "JOBS_QUEUE", "queue": "ayonix-sns-jobs" }
+        ],
+        "consumers": [
+          { "queue": "ayonix-sns-publish", "max_batch_size": 10, "max_retries": 5, "dead_letter_queue": "ayonix-sns-publish-dlq" },
+          { "queue": "ayonix-sns-jobs", "max_batch_size": 5, "max_retries": 3, "dead_letter_queue": "ayonix-sns-jobs-dlq" },
+          { "queue": "ayonix-sns-publish-dlq", "max_batch_size": 10, "max_retries": 0 }
+        ]
+      },
+      "triggers": { "crons": ["* * * * *", "17 3 * * *"] }
+    },
     "staging": {
       "name": "ayonix-sns-staging",
       "vars": {

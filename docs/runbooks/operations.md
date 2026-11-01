@@ -11,7 +11,7 @@ npm run dev                         # wrangler dev on http://localhost:8787
 Without EMAIL_API_KEY, verification/reset emails land in the development mailbox: `GET /dev/mailbox` (local/test only; deployed environments refuse to start without email).
 
 ## Staging / production
-- Provision: `scripts/provision-staging.sh` (needs Cloudflare access + domain decision).
+- Provision: `scripts/provision.sh staging|production` (needs Cloudflare access; production serves sns.ayonix.com).
 - Release: `scripts/release.sh staging|production` — tests, D1 export backup, forward-compatible migrations, deploy.
 - Smoke: `node scripts/verify-live.mjs https://<origin>`.
 - Rollback code: `npx wrangler rollback [--env staging]`. Schema migrations are additive; never roll the database back destructively.

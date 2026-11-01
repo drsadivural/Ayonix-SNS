@@ -16,7 +16,7 @@ packages/domain/   pricing, quotas, scheduling/DST, validation (ported from hand
 packages/contracts/ pricing.json, mcp-tools.json, shared API types
 migrations/        D1 migrations
 tests/             unit (provider contract tests), integration (migrations on SQLite)
-scripts/           preflight, gen-secrets, provision-staging, release, restore, verify-live
+scripts/           preflight, gen-secrets, provision, release, restore, verify-live
 handoff/           the original delivery package (design, docs, contracts, reference tests)
 docs/              decisions, runbooks, API notes
 evidence/          acceptance matrix and run evidence

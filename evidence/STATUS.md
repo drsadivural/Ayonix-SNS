@@ -63,7 +63,7 @@ Counts: BLOCKED 34, PASS 4 (of 38).
 PASS rows were produced locally and must be re-run on staging before release. Contract tests with doubles are never counted as live provider, Stripe or ChatGPT evidence.
 
 ## Next actions for the operator
-1. Choose the domain (proposed sns.ayonix.com) and grant scoped Cloudflare access; run `scripts/provision-staging.sh`.
+1. Choose the domain (proposed sns.ayonix.com) and grant scoped Cloudflare access; run `scripts/provision.sh staging`.
 2. Provide secrets via `wrangler secret put` (never in chat): BETTER_AUTH_SECRET, TOKEN_ENCRYPTION_KEY, SIGNING_KEY, EMAIL_API_KEY/EMAIL_FROM, STRIPE_* (sandbox), provider client credentials, RESEARCH_API_KEY, AI_PROVIDER_API_KEY.
 3. Register callbacks/webhooks listed in docs/runbooks/operations.md; create Stripe products/prices for Basic/Standard/Premium and a Custom product.
 4. Submit LinkedIn, Meta, TikTok and Google app reviews with the scopes in apps/worker/src/providers/SOURCES.md; designate test accounts.

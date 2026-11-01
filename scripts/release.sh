@@ -3,7 +3,8 @@
 # 1) verify  2) backup  3) migrate (forward-compatible)  4) deploy  5) smoke.
 set -euo pipefail
 ENV=${1:?usage: release.sh <staging|production>}
-WENV=$([ "$ENV" = production ] && echo "" || echo "--env $ENV")
+# The top-level wrangler config is local development; always pass the environment.
+WENV="--env $ENV"
 STAMP=$(date -u +%Y%m%dT%H%M%SZ)
 mkdir -p evidence/private/backups
 npm ci
