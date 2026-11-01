@@ -39,8 +39,14 @@ app.use('*', async (c, next) => {
     return c.json({ error: { code: 'not_configured', message: 'This deployment is missing required configuration.', request_id: requestId, retryable: false } }, 503);
   }
   await next();
+  // Responses from ASSETS.fetch or Response.redirect have immutable headers.
+  try {
+    c.res.headers.set('x-request-id', requestId);
+  } catch {
+    c.res = new Response(c.res.body, c.res);
+    c.res.headers.set('x-request-id', requestId);
+  }
   for (const [k, v] of Object.entries(SECURITY_HEADERS)) c.res.headers.set(k, v);
-  c.res.headers.set('x-request-id', requestId);
 });
 
 app.onError((err, c) => errorResponse(err, c.get('requestId')));

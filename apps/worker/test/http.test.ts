@@ -2,8 +2,9 @@
 // D1/KV. Exercises website auth (Better Auth), CSRF, MCP OAuth 2.1 + PKCE via
 // workers-oauth-provider and authenticated MCP tool calls. Local only: this is
 // not evidence of a real ChatGPT installation or a deployed environment.
-import { SELF } from 'cloudflare:test';
+import { SELF, createExecutionContext } from 'cloudflare:test';
 import { describe, expect, it } from 'vitest';
+import { app } from '../src/app.js';
 import { testEnv } from './helpers.js';
 
 const ORIGIN = 'http://localhost:8787';
@@ -61,6 +62,16 @@ describe('website', () => {
     expect((await SELF.fetch(`${ORIGIN}/health/live`)).status).toBe(200);
     const ready = await SELF.fetch(`${ORIGIN}/health/ready`);
     expect(await ready.json()).toMatchObject({ status: 'ready' });
+  });
+
+  it('unmatched worker-first paths fall through to ASSETS without a 500', async () => {
+    // TEST DOUBLE: ASSETS stands in for the static asset binding and, like the
+    // real one, returns a response whose headers are immutable.
+    const ASSETS = { fetch: async () => Response.redirect(`${ORIGIN}/`, 307) } as unknown as Fetcher;
+    const res = await app.fetch(new Request(`${ORIGIN}/api/health`), { ...testEnv, ASSETS }, createExecutionContext());
+    expect(res.status).toBe(307);
+    expect(res.headers.get('x-content-type-options')).toBe('nosniff');
+    expect(res.headers.get('x-request-id')).toBeTruthy();
   });
 
   it('AUTH-01 (local): register → verify → sign in → workspace; CSRF blocks cross-site mutations', async () => {
