@@ -29,6 +29,13 @@ describe('facebook oauth', () => {
     expect(u.searchParams.get('redirect_uri')).toBe('https://app.example.test/cb/fb');
     expect(u.searchParams.get('scope')).toBe('pages_show_list,pages_read_engagement,pages_manage_posts,read_insights');
     expect(u.searchParams.has('code_challenge')).toBe(false);
+    expect(u.searchParams.has('config_id')).toBe(false);
+  });
+
+  it('authorizeUrl sends the Login for Business configuration ID instead of scope when set', () => {
+    const u = new URL(facebook.authorizeUrl({ ...env, META_FACEBOOK_CONFIG_ID: 'cfg-fb', META_INSTAGRAM_CONFIG_ID: 'cfg-ig' }, { state: 's1', codeChallenge: 'c', redirectUri: 'https://app.example.test/cb/fb' }));
+    expect(u.searchParams.get('config_id')).toBe('cfg-fb');
+    expect(u.searchParams.has('scope')).toBe(false);
   });
 
   it('exchangeCode exchanges for a long-lived token and reads granted permissions', async () => {

@@ -58,8 +58,8 @@
         "ENVIRONMENT": "production",
         "DEFAULT_TIMEZONE": "Australia/Melbourne",
         "TOKEN_ENCRYPTION_KEY_VERSION": "1",
-        "LINKEDIN_API_VERSION": "",
-        "META_GRAPH_VERSION": "",
+        "LINKEDIN_API_VERSION": "202610",
+        "META_GRAPH_VERSION": "v26.0",
         "AI_MODEL": "claude-opus-5-5",
         "EMAIL_FROM": "Ayonix-SNS <no-reply@ayonix.com>"
       },
@@ -87,8 +87,8 @@
         "ENVIRONMENT": "staging",
         "DEFAULT_TIMEZONE": "Australia/Melbourne",
         "TOKEN_ENCRYPTION_KEY_VERSION": "1",
-        "LINKEDIN_API_VERSION": "",
-        "META_GRAPH_VERSION": "",
+        "LINKEDIN_API_VERSION": "202610",
+        "META_GRAPH_VERSION": "v26.0",
         "AI_MODEL": "claude-opus-5-5",
         "EMAIL_FROM": ""
       },

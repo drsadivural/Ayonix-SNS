@@ -58,7 +58,7 @@ export const facebook: ProviderAdapter = {
   provider: 'facebook',
   configured: (env) => providerConfigured(env, 'facebook'),
   scopes: () => [...SCOPES],
-  authorizeUrl: (env, input) => facebookAuthorizeUrl(env, input, SCOPES),
+  authorizeUrl: (env, input) => facebookAuthorizeUrl(env, input, SCOPES, env.META_FACEBOOK_CONFIG_ID),
   exchangeCode: (env, code, _verifier, redirectUri, fetchImpl) => metaExchangeCode(env, code, redirectUri, fetchImpl, P),
 
   async discoverAccounts(env, tokens, fetchImpl) {

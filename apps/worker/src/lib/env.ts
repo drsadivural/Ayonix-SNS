@@ -40,6 +40,9 @@ export interface Env {
   META_APP_ID?: string;
   META_APP_SECRET?: string;
   META_GRAPH_VERSION?: string;
+  /** Facebook Login for Business configuration IDs; when set they replace the scope list. */
+  META_FACEBOOK_CONFIG_ID?: string;
+  META_INSTAGRAM_CONFIG_ID?: string;
   TIKTOK_CLIENT_KEY?: string;
   TIKTOK_CLIENT_SECRET?: string;
   GOOGLE_CLIENT_ID?: string;

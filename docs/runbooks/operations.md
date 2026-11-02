@@ -11,6 +11,7 @@ npm run dev                         # wrangler dev on http://localhost:8787
 Without EMAIL_API_KEY, verification/reset emails land in the development mailbox: `GET /dev/mailbox` (local/test only; deployed environments refuse to start without email).
 
 ## Staging / production
+- Connectors: [connectors.md](connectors.md) — developer apps, redirect URLs, scopes and reviews for each network.
 - Provision: `scripts/provision.sh staging|production` (needs Cloudflare access; production serves sns.ayonix.com).
 - Release: `scripts/release.sh staging|production` — tests, D1 export backup, forward-compatible migrations, deploy.
 - Smoke: `node scripts/verify-live.mjs https://<origin>`.

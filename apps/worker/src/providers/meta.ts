@@ -85,15 +85,18 @@ export async function graph<T>(
   return readJson<T>(res);
 }
 
-export function facebookAuthorizeUrl(env: Env, input: { state: string; redirectUri: string }, scopes: string[]): string {
+export function facebookAuthorizeUrl(env: Env, input: { state: string; redirectUri: string }, scopes: string[], configId?: string): string {
   // Facebook Login (manual flow) uses state + app secret on the server; PKCE is not used here.
+  // Business apps use Facebook Login for Business, where a configuration ID
+  // replaces `scope` (Meta recommends not sending both).
   const q = new URLSearchParams({
     client_id: requireConfig(env.META_APP_ID, 'META_APP_ID'),
     redirect_uri: input.redirectUri,
     state: input.state,
     response_type: 'code',
-    scope: scopes.join(','),
   });
+  if (configId) q.set('config_id', configId);
+  else q.set('scope', scopes.join(','));
   return `https://www.facebook.com/${graphVersion(env)}/dialog/oauth?${q.toString()}`;
 }
 

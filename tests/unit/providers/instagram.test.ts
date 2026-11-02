@@ -18,6 +18,12 @@ describe('instagram oauth + discovery (Facebook Login path)', () => {
     expect(u.searchParams.get('redirect_uri')).toBe('https://app.example.test/cb/ig');
   });
 
+  it('authorizeUrl uses the Instagram configuration ID, not the Facebook one', () => {
+    const u = new URL(instagram.authorizeUrl({ ...env, META_FACEBOOK_CONFIG_ID: 'cfg-fb', META_INSTAGRAM_CONFIG_ID: 'cfg-ig' }, { state: 's', codeChallenge: 'c', redirectUri: 'https://app.example.test/cb/ig' }));
+    expect(u.searchParams.get('config_id')).toBe('cfg-ig');
+    expect(u.searchParams.has('scope')).toBe(false);
+  });
+
   it('exchangeCode reads scopes from /me/permissions', async () => {
     const { fetch } = fetchDouble([
       { method: 'POST', match: '/oauth/access_token', times: 1, reply: () => json({ access_token: 'S', expires_in: 3600 }) },

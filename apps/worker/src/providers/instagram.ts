@@ -60,7 +60,7 @@ export const instagram: ProviderAdapter = {
   provider: 'instagram',
   configured: (env) => providerConfigured(env, 'instagram'),
   scopes: () => [...SCOPES],
-  authorizeUrl: (env, input) => facebookAuthorizeUrl(env, input, SCOPES),
+  authorizeUrl: (env, input) => facebookAuthorizeUrl(env, input, SCOPES, env.META_INSTAGRAM_CONFIG_ID),
   exchangeCode: (env, code, _verifier, redirectUri, fetchImpl) => metaExchangeCode(env, code, redirectUri, fetchImpl, P),
 
   async discoverAccounts(env, tokens, fetchImpl) {
