@@ -2,6 +2,8 @@
 # Production release (run only with operator authorization).
 # 1) verify  2) backup  3) migrate (forward-compatible)  4) deploy  5) smoke.
 set -euo pipefail
+# Backups contain user data: keep them private to this user.
+umask 077
 ENV=${1:?usage: release.sh <staging|production>}
 # The top-level wrangler config is local development; always pass the environment.
 WENV="--env $ENV"
